@@ -2,6 +2,7 @@ package array_slices_test
 
 import (
 	"fmt"
+	"reflect"
 	"testing"
 
 	array_slices "github.com/BrunoSSantana/learn-go-with-test/cmd/array_slices"
@@ -35,4 +36,13 @@ func ExampleSum() {
 	sum := array_slices.Sum([]int{1, 5, 9})
 	fmt.Println(sum)
 	// Output: 15
+}
+
+func TestSumAll(t *testing.T) {
+	got := array_slices.SumAll([]int{1, 2}, []int{0, 9})
+	want := []int{3, 9}
+
+	if !reflect.DeepEqual(got, want) {
+		t.Errorf("got %v want %v", got, want)
+	}
 }
