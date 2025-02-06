@@ -5,9 +5,12 @@ import (
 	"testing"
 )
 
-func TestGreet(t *testing.T) {
+func TestGreetService(t *testing.T) {
 	buffer := bytes.Buffer{}
-	Greet(&buffer, "Chris")
+	greet := &Greet{}
+	service := NewGreetService(greet)
+
+	service.Greet(&buffer, "Chris")
 
 	got := buffer.String()
 	want := "Hello, Chris"
